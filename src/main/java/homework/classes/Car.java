@@ -6,7 +6,7 @@ import org.joda.time.DateTime;
  * Created by 4oc3p on 18.02.2017. Java_core
  */
 public class Car {
-    private static final int YEAR = DateTime.now().getYear();
+    private static final int CURRENT_YEAR = DateTime.now().getYear();
     private int yearOfIssue;
     private int mileage;
     private String color;
@@ -24,7 +24,7 @@ public class Car {
     }
 
     public int mileagePerYear() {
-        return this.mileage / (YEAR - this.yearOfIssue);
+        return this.mileage / (CURRENT_YEAR - this.yearOfIssue);
     }
 
     public String increaseMileage(int someKilometres) {
