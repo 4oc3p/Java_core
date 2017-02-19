@@ -8,7 +8,7 @@ public class MasPrimes {
     public static void main(String[] args) {
         int[] evenNumbers = new int[20];
         fillArray(evenNumbers);
-        for (int i = 0; i < evenNumbers.length; i++){
+        for (int i = 0; i < evenNumbers.length; i++) {
             System.out.print(evenNumbers[i] + " ");
         }
         System.out.println("\nSum of array digits: " + arraySum(evenNumbers));
@@ -16,7 +16,7 @@ public class MasPrimes {
     }
 
     public static void fillArray(int[] a) {
-        for (int i = 0; i < a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             a[i] = prime();
         }
     }
@@ -32,9 +32,9 @@ public class MasPrimes {
         return rand;
     }
 
-    public static int arraySum(int []a){
+    public static int arraySum(int[] a) {
         int sum = 0;
-        for (int i = 0; i < a.length; i++){
+        for (int i = 0; i < a.length; i++) {
             sum += a[i];
         }
         return sum;
