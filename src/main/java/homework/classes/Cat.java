@@ -30,7 +30,7 @@ public class Cat {
     }
 
     public String catCompare(Cat otherCat) {
-        return (this.age * this.weight) > (otherCat.age * otherCat.weight) ? this.name : otherCat.name;
+        return this.catStrength() > otherCat.catStrength() ? this.name : otherCat.name;
     }
 
 }
