@@ -16,8 +16,9 @@ public class MasInvert {
 
     public static void arrInvert(int[] arr) {
         for (int i = 0; i < arr.length / 2; i++) {
-            int temp = arr[arr.length - (1 + i)];
-            arr[arr.length - (1 + i)] = arr[i];
+            int revers = arr.length - (1 + i);
+            int temp = arr[revers];
+            arr[revers] = arr[i];
             arr[i] = temp;
         }
     }
