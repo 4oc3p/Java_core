@@ -3,7 +3,7 @@ package homework.user_auth;
 /**
  * Created by 4oc3p on 05.03.2017. Java_core
  */
-public class Users {
+public class User {
     private static int DEF_USER_NUM = 1;
     private String name;
     private int age;
@@ -11,7 +11,7 @@ public class Users {
     private String login;
     private String pass;
 
-    public Users() {
+    public User() {
         this.name = "N/A";
         this.role = "default_user";
         this.login = "user" + DEF_USER_NUM;
@@ -19,7 +19,7 @@ public class Users {
         DEF_USER_NUM++;
     }
 
-    public Users(String name, int age, String role, String login, String pass) {
+    public User(String name, int age, String role, String login, String pass) {
 
         this.name = name;
         this.age = age;
@@ -46,5 +46,16 @@ public class Users {
 
     String getPass() {
         return pass;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", role='" + role + '\'' +
+                ", login='" + login + '\'' +
+                ", pass='" + pass + '\'' +
+                '}';
     }
 }
