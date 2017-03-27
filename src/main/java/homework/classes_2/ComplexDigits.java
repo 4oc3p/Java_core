@@ -15,16 +15,16 @@ public class ComplexDigits {
 
     @Override
     public String toString() {
-        return realNumber + "+" + imaginaryNumber + "i";
+        return realNumber + "+" + (double) Math.round(imaginaryNumber * 100) / 100 + "i";
     }
 
 
-    public String add(ComplexDigits otherComplex) {
-        return (this.realNumber + otherComplex.realNumber) + " + " + (this.imaginaryNumber + otherComplex.imaginaryNumber) + "i";
+    public ComplexDigits add(ComplexDigits otherComplex) {
+        return new ComplexDigits(this.realNumber + otherComplex.realNumber,this.imaginaryNumber + otherComplex.imaginaryNumber);
     }
 
-    public String subtract(ComplexDigits otherComplex) {
-        return (this.realNumber - otherComplex.realNumber) + " + " + (this.imaginaryNumber - otherComplex.imaginaryNumber) + "i";
+    public ComplexDigits subtract(ComplexDigits otherComplex) {
+        return new ComplexDigits(this.realNumber - otherComplex.realNumber, this.imaginaryNumber - otherComplex.imaginaryNumber);
     }
 
     public static void main(String[] args) {
