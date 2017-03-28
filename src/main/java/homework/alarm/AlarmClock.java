@@ -91,9 +91,8 @@ public class AlarmClock {
             } else {
                 System.out.println("Alarm activated:" + this.isActivated + "\nDo you want to activate? Enter 'y' if yes");
                 Scanner scanner = new Scanner(System.in);
-                boolean choice = scanner.nextLine().equals("y");
-                this.isActivated = choice;
-                if (choice) {
+                this.isActivated = scanner.nextLine().toLowerCase().equals("y");
+                if (this.isActivated) {
                     System.out.println("hours");
                     this.alarmHours = scanner.nextInt();
                     System.out.println("minutes");
