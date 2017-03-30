@@ -37,12 +37,12 @@ public class AlarmClock {
         this.alarmMelody = alarmMelody;
     }
 
-    public EnumVolume getAlarmVolumel() {
+    public EnumVolume getAlarmVolume() {
         return alarmVolume;
     }
 
-    public void setAlarmVolumel(EnumVolume alarmVolumel) {
-        this.alarmVolume = alarmVolumel;
+    public void setAlarmVolume(EnumVolume alarmVolume) {
+        this.alarmVolume = alarmVolume;
     }
 
     public int getAlarmHours() {
@@ -81,32 +81,40 @@ public class AlarmClock {
             minutes = time.getMinuteOfHour();
             seconds = time.getSecondOfMinute();
             if (this.isActivated) {
-                if (hour == this.alarmHours && minutes == this.alarmMinutes) {
-                    buzzAlarm(this.alarmMelody, this.alarmVolume);
-                    break;
-                } else {
-                    Thread.sleep(1000);
-                    System.out.println(hour + ":" + minutes + ":" + seconds);
-                }
+                alarmIsActivated(hour, minutes, seconds);
             } else {
-                System.out.println("Alarm activated:" + this.isActivated + "\nDo you want to activate? Enter 'y' if yes");
-                Scanner scanner = new Scanner(System.in);
-                this.isActivated = scanner.nextLine().toLowerCase().equals("y");
-                if (this.isActivated) {
-                    System.out.println("hours");
-                    this.alarmHours = scanner.nextInt();
-                    System.out.println("minutes");
-                    this.alarmMinutes = scanner.nextInt();
-                } else {
-                    System.out.println("Alarm deactivated, bye.");
-                    break;
-                }
+                alarmIsNotActivated();
             }
         }
     }
 
     private void buzzAlarm(EnumMelody melody, EnumVolume volume) {
         System.out.printf("Alarm is ringing with melody => %s and volume => %s\n", melody, volume);
+    }
+
+    private void alarmIsActivated(int hour, int minutes, int seconds) throws InterruptedException {
+        if (hour == this.alarmHours && minutes == this.alarmMinutes) {
+            buzzAlarm(this.alarmMelody, this.alarmVolume);
+            System.exit(0);
+        } else {
+            System.out.println(hour + ":" + minutes + ":" + (seconds < 10 ? "0" : "") + seconds);
+            Thread.sleep(1000);
+        }
+    }
+
+    private void alarmIsNotActivated() {
+        System.out.println("Alarm activated:" + this.isActivated + "\nDo you want to activate? Enter 'y' if yes");
+        Scanner scanner = new Scanner(System.in);
+        this.isActivated = scanner.nextLine().toLowerCase().equals("y");
+        if (this.isActivated) {
+            System.out.println("hours");
+            this.alarmHours = scanner.nextInt();
+            System.out.println("minutes");
+            this.alarmMinutes = scanner.nextInt();
+        } else {
+            System.out.println("Alarm deactivated, bye.");
+            System.exit(0);
+        }
     }
 
 }
