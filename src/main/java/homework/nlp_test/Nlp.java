@@ -10,6 +10,17 @@ import java.util.Scanner;
  * Created by 4oc3p on 05.04.2017. Java_core
  */
 public class Nlp {
+    public static int numberOfSentencesInText(String fileLoc) throws FileNotFoundException {
+        return makeDetectedSentencesArray(fileLoc).length;
+    }
+
+    public static void printSentencesOfText(String fileLoc) throws FileNotFoundException {
+        String[] sentences = makeDetectedSentencesArray(fileLoc);
+        for (String sent : sentences) {
+            System.out.println(sent);
+        }
+    }
+
     private static String buildStringFromFile(InputStream file) {
         Scanner scanner = new Scanner(file);
         StringBuilder s = new StringBuilder();
@@ -32,23 +43,14 @@ public class Nlp {
         return sentences;
     }
 
-    public static int numberOfSentencesInText(String fileLoc) throws FileNotFoundException {
-        String string = buildStringFromFile(makeInputStream(fileLoc));
-        String[] sentences = sentenceDetection(string);
-        return sentences.length;
-    }
-
-    public static void printSentencesOfText(String fileLoc) throws FileNotFoundException {
-        String string = buildStringFromFile(makeInputStream(fileLoc));
-        String[] sentences = sentenceDetection(string);
-        for (String sent : sentences) {
-            System.out.println(sent);
-        }
-    }
-
 
     private static InputStream makeInputStream(String fileLoc) throws FileNotFoundException {
         File f = new File(fileLoc);
         return new FileInputStream(f);
+    }
+
+    private static String[] makeDetectedSentencesArray(String fileLoc) throws FileNotFoundException {
+        String string = buildStringFromFile(makeInputStream(fileLoc));
+        return sentenceDetection(string);
     }
 }
