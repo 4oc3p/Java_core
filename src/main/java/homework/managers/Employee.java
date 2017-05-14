@@ -4,7 +4,7 @@ package homework.managers;
  * Created by Admin on 14.05.2017.
  */
 public class Employee {
-    private static String delimiter = "";
+    private static String delimiter;
     private String name;
     private Employee manager;
 
@@ -19,13 +19,11 @@ public class Employee {
 
     public static void printInfoAboutManagers(Employee employee){
         if(employee.manager != null){
+            delimiter = "";
             printInfoAboutManagers(employee.manager);
-            delimiter += "_";
-            System.out.print("|" + delimiter);
-            System.out.println(employee.name + "'s manager is " + employee.manager.name);
+            System.out.printf("|%s%s's manager is %s\n", delimiter += "_", employee.name, employee.manager.name);
         } else {
             System.out.println(employee.name + " is on the highest position");
-            delimiter = "";
         }
     }
 
