@@ -6,23 +6,19 @@ import java.util.Arrays;
  * Created by 4oc3p on 16.04.2017. Java_core
  */
 public class QuestionList {
-    private Question[] questionList = new Question[0];
+    private Question[] questionList;
 
     public Question[] getQuestionList() {
         return questionList;
     }
 
-    public void setQuestionList(Question[] questionList) {
-        this.questionList = questionList;
-    }
-
     public void addQuestion(Question... question) {
+        Question temp[] = new Question[question.length];
+        int i = 0;
         for (Question q : question) {
-            Question temp[] = Arrays.copyOf(this.questionList, this.questionList.length + 1);
-            temp[temp.length - 1] = q;
-            this.questionList = temp;
+            temp[i++] = q;
         }
-
+        this.questionList = temp;
     }
 
     @Override

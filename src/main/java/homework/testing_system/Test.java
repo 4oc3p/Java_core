@@ -15,6 +15,7 @@ public class Test {
 
         User user1 = new User("Valera");
 
+
         user1.startTest(TestDifficulty.EASY, questionList);
         user1.startTest(TestDifficulty.HARD, questionList);
 

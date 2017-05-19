@@ -18,15 +18,14 @@ public class Question {
         this.difficulty = TestDifficulty.EASY;
     }
 
-    public Question(String question, int rightAnswerForHard, String... variantsOfAnswer) {
+    public Question(String question, int rightAnswerForHard, String ... variantsOfAnswer) {
         this.question = question;
         this.rightAnswerForHard = rightAnswerForHard;
         this.difficulty = TestDifficulty.HARD;
         this.variantsOfAnswer = new String[variantsOfAnswer.length];
         int a = 0;
         for (String s : variantsOfAnswer) {
-            this.variantsOfAnswer[a] = s;
-            a++;
+            this.variantsOfAnswer[a++] = s;
         }
     }
 
