@@ -1,9 +1,5 @@
 package codewars;
 
-import static junit.framework.Assert.assertEquals;
-
-import org.junit.Test;
-
 /**
  * Created by 4oc3p on 09.06.2017. Java_core
  */
