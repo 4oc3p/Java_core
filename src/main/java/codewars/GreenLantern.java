@@ -1,6 +1,5 @@
 package codewars;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,14 +23,14 @@ public class GreenLantern {
 
     public static String yellowBeGone(String colorNameOrCode) {
         if (colorNameOrCode.startsWith("#")) {
-            String rStr = colorNameOrCode.substring(1, 3);
-            String gStr = colorNameOrCode.substring(3, 5);
-            String bStr = colorNameOrCode.substring(5, 7);
-            int rInt = Integer.parseInt(rStr, 16);
-            int gInt = Integer.parseInt(gStr, 16);
-            int bInt = Integer.parseInt(bStr, 16);
+            int rInt = Integer.parseInt(colorNameOrCode.substring(1, 3), 16);
+            int gInt = Integer.parseInt(colorNameOrCode.substring(3, 5), 16);
+            int bInt = Integer.parseInt(colorNameOrCode.substring(5, 7), 16);
             if (rInt > bInt && gInt > bInt) {
-                return String.format("#%s%s", bStr, rInt > gInt ? rStr + gStr : gStr + rStr);
+                return String.format("#%s%s", colorNameOrCode.substring(5),
+                        rInt > gInt
+                                ? colorNameOrCode.substring(1, 5)
+                                : colorNameOrCode.substring(3, 5) + colorNameOrCode.substring(1, 3));
             }
             return colorNameOrCode;
         }
